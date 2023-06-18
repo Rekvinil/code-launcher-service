@@ -1,6 +1,7 @@
 package com.vkr.codelauncherservice.service;
 
 import com.vkr.codelauncherservice.data.IResult;
+import com.vkr.codelauncherservice.data.web.FileListResult;
 import com.vkr.codelauncherservice.launcher.ICodeLauncher;
 
 public class CodeLauncherService {
@@ -10,8 +11,8 @@ public class CodeLauncherService {
         this.codeLauncher = codeLauncher;
     }
 
-    public IResult launch() {
-        return codeLauncher.launch();
+    public IResult launch(FileListResult fileListResult) {
+        return codeLauncher.launch(fileListResult);
     }
 
 }

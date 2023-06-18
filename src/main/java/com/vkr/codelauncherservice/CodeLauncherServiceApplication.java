@@ -1,17 +1,35 @@
 package com.vkr.codelauncherservice;
 
+import com.vkr.codelauncherservice.data.web.FileListResult;
+import com.vkr.codelauncherservice.launcher.ICodeLauncher;
+import com.vkr.codelauncherservice.launcher.OpenHftJavaLauncher;
 import net.openhft.compiler.CompilerUtils;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import net.openhft.compiler.CachedCompiler;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
-import java.io.File;
+import java.util.ArrayList;
 
 //@SpringBootApplication
 public class CodeLauncherServiceApplication {
 
     public static void main(String[] args) {
         //SpringApplication.run(CodeLauncherServiceApplication.class, args);
+
+//        String mainPath = "C:\\Users\\Ivan\\Desktop\\m2curs\\SanyaUkhov\\example1\\Main.java";
+//        String writerExamplePath = "C:\\Users\\Ivan\\Desktop\\m2curs\\SanyaUkhov\\example1\\packageex\\WriterExample.java";
+//        String writerExample2Path = "C:\\Users\\Ivan\\Desktop\\m2curs\\SanyaUkhov\\example1\\packageex\\WriterExample2.java";
+//
+//        ICodeLauncher codeLauncher = new OpenHftJavaLauncher();
+//
+//        FileListResult fileListResult = new FileListResult();
+//        fileListResult.setUserId("123");
+//        fileListResult.setProjectName("testProject");
+//        fileListResult.setFileList(new ArrayList<String>());
+//        fileListResult.getFileList().add(mainPath);
+//        fileListResult.getFileList().add(writerExamplePath);
+//        fileListResult.getFileList().add(writerExample2Path);
+//
+//        codeLauncher.launch(fileListResult);
 
         String writerClassName = "packageex.WriterExample";
         String writerJavaCode = "package packageex;\n" +
@@ -47,7 +65,7 @@ public class CodeLauncherServiceApplication {
                 "        WriterExample writer = new WriterExample();\n" +
                 "        WriterExample2 writer2 = new WriterExample2();\n" +
                 "\n" +
-                "        writer.printMessag();\n" +
+                "        writer.printMessage();\n" +
                 "        writer.printMessage();\n" +
                 "        writer.printMessage();\n" +
                 "\n" +
@@ -62,6 +80,11 @@ public class CodeLauncherServiceApplication {
         } catch (Exception e) {
 
         }
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

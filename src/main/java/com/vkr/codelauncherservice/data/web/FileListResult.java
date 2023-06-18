@@ -6,7 +6,6 @@ import com.vkr.codelauncherservice.data.IResult;
 import lombok.*;
 
 import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -16,6 +15,8 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Builder
 public class FileListResult implements IResult {
+    String userId;
+
     @NotNull
     @JsonProperty
     String projectName;
@@ -23,8 +24,4 @@ public class FileListResult implements IResult {
     @NotNull
     @JsonProperty
     List<String> fileList;
-
-    @NotNull
-    @JsonProperty
-    Map<String, String> fileLinks;
 }
